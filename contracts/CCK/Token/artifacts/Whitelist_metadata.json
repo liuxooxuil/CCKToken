@@ -71,8 +71,32 @@
 			}
 		],
 		"devdoc": {
+			"details": "A contract that manages a whitelist of addresses.",
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"addToWhitelist(address)": {
+					"details": "Adds a member to the whitelist.",
+					"params": {
+						"member": "Address of the user to be added to the whitelist."
+					}
+				},
+				"isWhitelisted(address)": {
+					"details": "Checks if a member is in the whitelist.",
+					"params": {
+						"member": "Address of the user to check."
+					},
+					"returns": {
+						"_0": "bool Indicates if the user is whitelisted."
+					}
+				},
+				"removeFromWhitelist(address)": {
+					"details": "Removes a member from the whitelist.",
+					"params": {
+						"member": "Address of the user to be removed from the whitelist."
+					}
+				}
+			},
+			"title": "Whitelist",
 			"version": 1
 		},
 		"userdoc": {
@@ -98,11 +122,11 @@
 	},
 	"sources": {
 		"contracts/CCK/Token/Whitelist.sol": {
-			"keccak256": "0x1b191aa4809256d32532030a2dcdea543ffd42470b0253cd1a5e5d3c98f79891",
+			"keccak256": "0x973ee3183765c85fb3f372b8f9c92209e853888ea1977b3c8ea0ab5c08f893e5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://be4bfaee87a58efa4ec053fc457ed5dd10486a11498328b5c857b98ece225cb1",
-				"dweb:/ipfs/QmbWnV186mkdoRAYVtZEroQ2SiTHrWYuREnLubSQV5tYyH"
+				"bzz-raw://c408b2d185de6b1798142cab0accf782ee27edf63ec30f8db5d6581c8b29e5c8",
+				"dweb:/ipfs/QmbBRtQDmtsaff6vPzy7RRxCHUbLfqYyc1FGsqjjnba6Yf"
 			]
 		}
 	},

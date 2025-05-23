@@ -44,8 +44,23 @@
 			}
 		],
 		"devdoc": {
+			"details": "A contract for retrieving the current price from a Uniswap V3 pool.",
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"constructor": {
+					"details": "Constructor to set the Uniswap V3 pool address.",
+					"params": {
+						"_uniswapPool": "Address of the Uniswap V3 pool to be used for price retrieval."
+					}
+				},
+				"getCurrentPrice()": {
+					"details": "Retrieves the current price from the Uniswap V3 pool.",
+					"returns": {
+						"_0": "uint256 The current price calculated from the pool's sqrtPriceX96."
+					}
+				}
+			},
+			"title": "PriceOracle",
 			"version": 1
 		},
 		"userdoc": {
@@ -127,11 +142,11 @@
 			]
 		},
 		"contracts/CCK/Token/PriceOracle.sol": {
-			"keccak256": "0x9245050b3d065c9e4c1cfcd4616bd2d75024898ccdcdb0e7ab7119e0af30690a",
+			"keccak256": "0x8de7bf13d65099ce7615c9f50e8ff97351e2c3c59265883be34027eb3f77f956",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d6d48b2d6e4ed26a603321d12cb66cf5eeaa2eb03dd7d73df12c31bc6ee66159",
-				"dweb:/ipfs/QmU4jgwkEr8QDPe9M4wDNEw5NkwJcmcoGM11AeqPUWgSww"
+				"bzz-raw://da87ae49c3f66219c3511a657894841e946d2db9173a04cc19193c23dc849fdf",
+				"dweb:/ipfs/QmWw2tWoPMN3qYU5kCDnGziGnRDQpAgpXQ7kE13ByuArEP"
 			]
 		}
 	},

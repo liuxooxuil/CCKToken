@@ -1,0 +1,200 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "compliance",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					}
+				],
+				"name": "getFrozenTokens",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "identityRegistry",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					}
+				],
+				"name": "isFrozen",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "onchainID",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "version",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Interface for on-chain identity management and compliance.",
+			"kind": "dev",
+			"methods": {
+				"compliance()": {
+					"details": "Returns the compliance address.",
+					"returns": {
+						"_0": "address The compliance address."
+					}
+				},
+				"getFrozenTokens(address)": {
+					"details": "Returns the number of frozen tokens for a user.",
+					"params": {
+						"userAddress": "Address of the user to check."
+					},
+					"returns": {
+						"_0": "uint256 Amount of frozen tokens."
+					}
+				},
+				"identityRegistry()": {
+					"details": "Returns the identity registry address.",
+					"returns": {
+						"_0": "address The identity registry address."
+					}
+				},
+				"isFrozen(address)": {
+					"details": "Checks if a user is frozen.",
+					"params": {
+						"userAddress": "Address of the user to check."
+					},
+					"returns": {
+						"_0": "bool Indicates if the user is frozen."
+					}
+				},
+				"onchainID()": {
+					"details": "Returns the on-chain ID of the contract.",
+					"returns": {
+						"_0": "address The address of the contract."
+					}
+				},
+				"paused()": {
+					"details": "Checks if the contract is paused.",
+					"returns": {
+						"_0": "bool Indicates if the contract is paused."
+					}
+				},
+				"version()": {
+					"details": "Returns the version of the contract.",
+					"returns": {
+						"_0": "string The version string."
+					}
+				}
+			},
+			"title": "IERC3643",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/CCK/ERC3643.sol": "IERC3643"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/CCK/ERC3643.sol": {
+			"keccak256": "0xd208c81552c0162bc660d08f9a22876de20247e40b8a161e411e8f00df1dcd67",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://14523991ce6c5d1fc9a789108e878f9d74823a36700c9be83f4bdc7d35e5ea84",
+				"dweb:/ipfs/QmPWt8jCPU7rafXDoL9biEvtMpm7cznbnNm6cttokSHeou"
+			]
+		}
+	},
+	"version": 1
+}
