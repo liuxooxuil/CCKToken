@@ -39,7 +39,7 @@ contract CCKToken is ERC20, Ownable, IERC3643 {
             whitelistContract.addToWhitelist(_whitelist[i]);
         }
 
-        _mint(msg.sender, TOTAL_SUPPLY); // Mint total supply to the contract deployer
+        // _mint(msg.sender, TOTAL_SUPPLY); // Mint total supply to the contract deployer
     }
 
     /**
@@ -152,5 +152,14 @@ contract CCKToken is ERC20, Ownable, IERC3643 {
      */
     function getCurrentPrice() external view returns (uint256) {
         return priceOracle.getCurrentPrice();
+    }
+
+ 
+    /**
+     * @dev Returns the number of decimal places used by the token.
+     * @return uint8 The number of decimal places (always returns 0 for this token).
+     */
+    function decimals() public view virtual override returns (uint8) {
+        return 0;
     }
 }

@@ -173,7 +173,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CCK/CCKToken_flattened.sol": "IERC3643"
+			"contracts/CCK/Token/CCKToken_flattened.sol": "IERC3643"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -187,11 +187,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/CCK/CCKToken_flattened.sol": {
-			"keccak256": "0x0dc49d73f0df84a6b1ed355c892722a0c3b648986b2f954710bf93719e537389",
+		"contracts/CCK/Token/CCKToken_flattened.sol": {
+			"keccak256": "0x50a1d9669fdd29bf3e7780f8e22d49953d1a06dc553fb5bb2f0b5f89954e965e",
 			"urls": [
-				"bzz-raw://02d273bab5712d24acfed8a1d4f70b88781fcecc682ba681f0c753900dca79c6",
-				"dweb:/ipfs/Qmf83Kze5w4g3rxk8tk6yVUEqTAWS6FTGiHGCVpWzn9aSP"
+				"bzz-raw://e5adb408a5be68145e1ebac41eece9c0c7c30a4d2710087481fc463e6f32946f",
+				"dweb:/ipfs/QmUPpEprw1b7Z6wVFvyj941pz6FkV683K7k6mPh4pFEZqW"
 			]
 		}
 	},

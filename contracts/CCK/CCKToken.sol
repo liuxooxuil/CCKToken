@@ -12,13 +12,15 @@ import "contracts/CCK/ERC3643.sol";
 contract CCKToken is ERC20, Ownable, IERC3643 {
 
     
-    uint256 public constant TOTAL_SUPPLY = 500_000 * 10**18; // 总供应量
+    // uint256 public constant TOTAL_SUPPLY = 500_000 * 10**18; // 总供应量
+
+    uint256 public constant TOTAL_SUPPLY = 500_000; // 总供应量
     mapping(address => bool) public whitelist; // 白名单
     mapping(address => bool) public frozen; // 冻结状态
     address public uniswapPool; // Uniswap V3 池地址
     uint256 public mintedAmount; // 已发行的代币数量
 
-    constructor(address[] memory _whitelist) ERC20("CCK", "CCK") Ownable(msg.sender) {
+    constructor(address[] memory _whitelist) ERC20("CCK", "CCKToken") Ownable(msg.sender) {
         require(_whitelist.length > 0, "At least one whitelisted address required");
         
         // 批量添加白名单成员
@@ -26,7 +28,7 @@ contract CCKToken is ERC20, Ownable, IERC3643 {
             whitelist[_whitelist[i]] = true;
         }
 
-        _mint(msg.sender, TOTAL_SUPPLY); // 初始发行总量
+        // _mint(msg.sender, TOTAL_SUPPLY); // 初始发行总量
     }
 
     // 添加白名单成员
@@ -103,6 +105,11 @@ contract CCKToken is ERC20, Ownable, IERC3643 {
         require(mintedAmount + amount <= TOTAL_SUPPLY, "Total supply exceeded");
         _mint(to, amount);
         mintedAmount += amount;
+    }
+
+      // 重写 ERC20 的 decimals 方法，设置为 0，表示没有小数点
+    function decimals() public view virtual override returns (uint8) {
+        return 0; // 没有小数位
     }
 
     // 查看用户持有的代币数量

@@ -107,7 +107,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CCK/Token/Whitelist.sol": "Whitelist"
+			"contracts/CCK/Token/CCKToken_flattened.sol": "Whitelist"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -121,12 +121,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/CCK/Token/Whitelist.sol": {
-			"keccak256": "0x973ee3183765c85fb3f372b8f9c92209e853888ea1977b3c8ea0ab5c08f893e5",
-			"license": "MIT",
+		"contracts/CCK/Token/CCKToken_flattened.sol": {
+			"keccak256": "0x50a1d9669fdd29bf3e7780f8e22d49953d1a06dc553fb5bb2f0b5f89954e965e",
 			"urls": [
-				"bzz-raw://c408b2d185de6b1798142cab0accf782ee27edf63ec30f8db5d6581c8b29e5c8",
-				"dweb:/ipfs/QmbBRtQDmtsaff6vPzy7RRxCHUbLfqYyc1FGsqjjnba6Yf"
+				"bzz-raw://e5adb408a5be68145e1ebac41eece9c0c7c30a4d2710087481fc463e6f32946f",
+				"dweb:/ipfs/QmUPpEprw1b7Z6wVFvyj941pz6FkV683K7k6mPh4pFEZqW"
 			]
 		}
 	},

@@ -623,6 +623,7 @@
 			}
 		],
 		"devdoc": {
+			"details": "ERC20 token implementation with additional features such as whitelisting, freezing accounts, and price retrieval from Uniswap V3.",
 			"errors": {
 				"ERC20InsufficientAllowance(address,uint256,uint256)": [
 					{
@@ -706,14 +707,88 @@
 				"balanceOf(address)": {
 					"details": "See {IERC20-balanceOf}."
 				},
+				"balanceOfUser(address)": {
+					"details": "Returns the balance of a specified user.",
+					"params": {
+						"user": "Address of the user to check balance"
+					},
+					"returns": {
+						"_0": "balance Amount of tokens held by the user"
+					}
+				},
+				"compliance()": {
+					"details": "Returns the compliance address.",
+					"returns": {
+						"_0": "address The compliance address (currently returns zero)"
+					}
+				},
+				"constructor": {
+					"details": "Constructor to initialize the token and its associated contracts.",
+					"params": {
+						"_uniswapPool": "Address of the Uniswap V3 pool for price retrieval",
+						"_whitelist": "Array of addresses to be added to the whitelist"
+					}
+				},
 				"decimals()": {
-					"details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5.05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the default value returned by this function, unless it's overridden. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
+					"details": "Returns the number of decimal places used by the token.",
+					"returns": {
+						"_0": "uint8 The number of decimal places (always returns 0 for this token)."
+					}
+				},
+				"getCurrentPrice()": {
+					"details": "Retrieves the current price from the price oracle.",
+					"returns": {
+						"_0": "price Current price of the token"
+					}
+				},
+				"getFrozenTokens(address)": {
+					"details": "Returns the number of frozen tokens for a user.",
+					"params": {
+						"userAddress": "Address of the user to check"
+					},
+					"returns": {
+						"_0": "frozenTokens Amount of frozen tokens (currently returns zero)"
+					}
+				},
+				"identityRegistry()": {
+					"details": "Returns the identity registry address.",
+					"returns": {
+						"_0": "address The identity registry address (currently returns zero)"
+					}
+				},
+				"isFrozen(address)": {
+					"details": "Checks if a user is frozen.",
+					"params": {
+						"userAddress": "Address of the user to check"
+					},
+					"returns": {
+						"_0": "frozen Indicates if the user is frozen"
+					}
+				},
+				"mint(address,uint256)": {
+					"details": "Mints new tokens to a specified address, if the address is whitelisted.",
+					"params": {
+						"amount": "Amount of tokens to mint",
+						"to": "Address to receive the minted tokens"
+					}
 				},
 				"name()": {
 					"details": "Returns the name of the token."
 				},
+				"onchainID()": {
+					"details": "Returns the on-chain ID of the contract.",
+					"returns": {
+						"_0": "address The address of the contract"
+					}
+				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
+				},
+				"paused()": {
+					"details": "Checks if the contract is paused.",
+					"returns": {
+						"_0": "paused Indicates if the contract is paused (always returns false)"
+					}
 				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
@@ -724,10 +799,38 @@
 				"totalSupply()": {
 					"details": "See {IERC20-totalSupply}."
 				},
+				"transfer(address,uint256)": {
+					"details": "Transfers tokens to a specified address.",
+					"params": {
+						"amount": "Amount of tokens to transfer",
+						"recipient": "Address to receive the tokens"
+					},
+					"returns": {
+						"_0": "success Indicates if the transfer was successful"
+					}
+				},
+				"transferFrom(address,address,uint256)": {
+					"details": "Transfers tokens from one address to another.",
+					"params": {
+						"amount": "Amount of tokens to transfer",
+						"recipient": "Address to receive the tokens",
+						"sender": "Address to send tokens from"
+					},
+					"returns": {
+						"_0": "success Indicates if the transfer was successful"
+					}
+				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"version()": {
+					"details": "Returns the version of the contract.",
+					"returns": {
+						"_0": "version The version string"
+					}
 				}
 			},
+			"title": "CCKToken",
 			"version": 1
 		},
 		"userdoc": {
@@ -857,43 +960,43 @@
 			]
 		},
 		"contracts/CCK/ERC3643.sol": {
-			"keccak256": "0x3879899ce81848dea435f7b95b6842b57ad0cfd8707686c14bccfffbd9ddeb85",
+			"keccak256": "0xd208c81552c0162bc660d08f9a22876de20247e40b8a161e411e8f00df1dcd67",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://24bc42cb8bcb9bac7a5fef2794a1659f6afd0e383dba6e3eced021f2168235d9",
-				"dweb:/ipfs/QmWrmsMkWxJLqY2T6CiMCZ9ntyHJqcRxyQajjTdHXUCNqk"
+				"bzz-raw://14523991ce6c5d1fc9a789108e878f9d74823a36700c9be83f4bdc7d35e5ea84",
+				"dweb:/ipfs/QmPWt8jCPU7rafXDoL9biEvtMpm7cznbnNm6cttokSHeou"
 			]
 		},
 		"contracts/CCK/Token/CCKToken.sol": {
-			"keccak256": "0x602aaf6b9779c0a48e2d979a473ae8d2318d28fc03f4ff8ed96c88813e981fed",
+			"keccak256": "0x9f26da40eda1789bf9193a999f758db19a2a065061a5bf91bea4d979efdef29e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0d0d1c4f32a46744e2211bc118073a59b8e2647f21b7846632f7b599f7181398",
-				"dweb:/ipfs/QmQ7Sw3yy6KRXYvzkizxnzgi7B8zBx6nSFHNStDYbP5Ycn"
+				"bzz-raw://836c00a69c94e83fcc0fd1c63d15dd9d8d8451d017a6880c6aa3c3a1f4e496ca",
+				"dweb:/ipfs/QmTrF4Zr9UBnTBQeY1uiuu32fCpnuDpoSTotKevwhqeUi5"
 			]
 		},
 		"contracts/CCK/Token/Freezable.sol": {
-			"keccak256": "0x3458fe67b7ce19e937444494b729afb00d655d89486eb3edebebeec486783d7d",
+			"keccak256": "0x936bdf2c54d40139021c0bccff9821e165e8aea7822ef7fac17b2720c1a8923e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8cdcebeb5f6cf8c745d3f655149e7bb6b0ec9843d508ab7b857c78505effa069",
-				"dweb:/ipfs/QmQhDZv2Qje8rpz1qXVseSPbgidYbhvWXMbqccxrauvph5"
+				"bzz-raw://572b4703cf852a03a78b8a5c9035d24e5e85188adec0e106867b90b8e081419a",
+				"dweb:/ipfs/QmNRArPyA6sCUZKC2wqoFRZkBFPuqweVP9h6858hWg6NsY"
 			]
 		},
 		"contracts/CCK/Token/PriceOracle.sol": {
-			"keccak256": "0x15e93717d32bdfddabc28e6fd15bcb6db34c98e7d9586b3d86d87f2132cfed24",
+			"keccak256": "0x8de7bf13d65099ce7615c9f50e8ff97351e2c3c59265883be34027eb3f77f956",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e382032807df378c21c9cc2246276bee83a8fe726ebc5f1dc7435deddeb38468",
-				"dweb:/ipfs/QmYkbKChaPnEsbWytxy5E2KkH1nrBTGSsykd3HJSGhPpLg"
+				"bzz-raw://da87ae49c3f66219c3511a657894841e946d2db9173a04cc19193c23dc849fdf",
+				"dweb:/ipfs/QmWw2tWoPMN3qYU5kCDnGziGnRDQpAgpXQ7kE13ByuArEP"
 			]
 		},
 		"contracts/CCK/Token/Whitelist.sol": {
-			"keccak256": "0x1b191aa4809256d32532030a2dcdea543ffd42470b0253cd1a5e5d3c98f79891",
+			"keccak256": "0x973ee3183765c85fb3f372b8f9c92209e853888ea1977b3c8ea0ab5c08f893e5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://be4bfaee87a58efa4ec053fc457ed5dd10486a11498328b5c857b98ece225cb1",
-				"dweb:/ipfs/QmbWnV186mkdoRAYVtZEroQ2SiTHrWYuREnLubSQV5tYyH"
+				"bzz-raw://c408b2d185de6b1798142cab0accf782ee27edf63ec30f8db5d6581c8b29e5c8",
+				"dweb:/ipfs/QmbBRtQDmtsaff6vPzy7RRxCHUbLfqYyc1FGsqjjnba6Yf"
 			]
 		}
 	},
