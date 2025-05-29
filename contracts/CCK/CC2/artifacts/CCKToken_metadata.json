@@ -8,18 +8,23 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "initialName",
+						"type": "string"
+					},
+					{
 						"internalType": "address[]",
 						"name": "_whitelist",
 						"type": "address[]"
 					},
 					{
-						"internalType": "address",
-						"name": "_transferReceiver",
-						"type": "address"
+						"internalType": "address[]",
+						"name": "_voters",
+						"type": "address[]"
 					},
 					{
 						"internalType": "address",
-						"name": "_tokenAddress",
+						"name": "_uniswapPool",
 						"type": "address"
 					}
 				],
@@ -138,6 +143,25 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "int64",
+						"name": "amount",
+						"type": "int64"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "initiator",
+						"type": "address"
+					}
+				],
+				"name": "AdjustTotalSupplyProposalCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "owner",
@@ -161,6 +185,126 @@
 			},
 			{
 				"anonymous": false,
+				"inputs": [],
+				"name": "ContractPaused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [],
+				"name": "ContractResumed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "action",
+						"type": "string"
+					}
+				],
+				"name": "FreezeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "action",
+						"type": "string"
+					}
+				],
+				"name": "FreezeProposalCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "MintExecuted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "MintProposalCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newName",
+						"type": "string"
+					}
+				],
+				"name": "NameChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "initiator",
+						"type": "address"
+					}
+				],
+				"name": "NameProposalCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": true,
@@ -176,6 +320,38 @@
 					}
 				],
 				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "proposalType",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "initiator",
+						"type": "address"
+					}
+				],
+				"name": "ProposalCancelled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newTotalSupply",
+						"type": "uint256"
+					}
+				],
+				"name": "TotalSupplyAdjusted",
 				"type": "event"
 			},
 			{
@@ -207,16 +383,85 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": true,
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "oldVoters",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "newVoters",
+						"type": "address[]"
+					}
+				],
+				"name": "VotersChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "oldVoters",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "newVoters",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
 						"internalType": "address",
-						"name": "token",
+						"name": "initiator",
+						"type": "address"
+					}
+				],
+				"name": "VotersProposalCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [],
+				"name": "VotingPaused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [],
+				"name": "VotingResumed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "member",
 						"type": "address"
 					},
 					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
+						"indexed": false,
+						"internalType": "string",
+						"name": "action",
+						"type": "string"
+					}
+				],
+				"name": "WhitelistChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "recipients",
+						"type": "address[]"
 					},
 					{
 						"indexed": false,
@@ -225,12 +470,70 @@
 						"type": "uint256"
 					}
 				],
-				"name": "TransferExecuted",
+				"name": "WhitelistDistribution",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "action",
+						"type": "string"
+					}
+				],
+				"name": "WhitelistProposalCreated",
 				"type": "event"
 			},
 			{
 				"inputs": [],
-				"name": "MINT_RATIO",
+				"name": "DISTRIBUTION_AMOUNT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "DISTRIBUTION_INTERVAL",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MIN_VOTES_FOR_MINT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MIN_VOTES_FOR_USER_ACTIONS",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -255,14 +558,21 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "TOTAL_VOTES_REQUIRED",
+				"outputs": [
 					{
-						"internalType": "address",
-						"name": "member",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
-				"name": "addToWhitelist",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "adjustTotalSupply",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -355,12 +665,94 @@
 			},
 			{
 				"inputs": [],
+				"name": "cancelProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeFreezeUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeMint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeUnfreezeUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeVoters",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeWhitelistAdd",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeWhitelistRemove",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "compliance",
 				"outputs": [
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contractPaused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -380,14 +772,8 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					}
-				],
-				"name": "freezeUser",
+				"inputs": [],
+				"name": "distributeToWhitelist",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -444,6 +830,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasVoted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "identityRegistry",
 				"outputs": [
@@ -476,21 +881,16 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
+				"inputs": [],
+				"name": "lastDistributionTimestamp",
+				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "mint",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -509,6 +909,19 @@
 			{
 				"inputs": [],
 				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newProposedName",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -547,12 +960,308 @@
 			},
 			{
 				"inputs": [],
+				"name": "pauseContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pauseVoting",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "paused",
 				"outputs": [
 					{
 						"internalType": "bool",
 						"name": "",
 						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposalActive",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposalInitiator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposalType",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"name": "proposeAddToWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int64",
+						"name": "amount",
+						"type": "int64"
+					}
+				],
+				"name": "proposeAdjustTotalSupply",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "proposeFreezeUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "proposeMint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "newName",
+						"type": "string"
+					}
+				],
+				"name": "proposeNewName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_oldVoters",
+						"type": "address[]"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_newVoters",
+						"type": "address[]"
+					}
+				],
+				"name": "proposeNewVoters",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"name": "proposeRemoveFromWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "proposeUnfreezeUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedAdjustmentAmount",
+				"outputs": [
+					{
+						"internalType": "int64",
+						"name": "",
+						"type": "int64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedFreezeAction",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedFreezeUser",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedMintAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedMintRecipient",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "proposedNewVoters",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "proposedOldVoters",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedWhitelistAction",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedWhitelistMember",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -572,21 +1281,22 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "member",
-						"type": "address"
-					}
-				],
-				"name": "removeFromWhitelist",
+				"inputs": [],
+				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "renounceOwnership",
+				"name": "resumeContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "resumeVoting",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -606,12 +1316,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "tokenAddress",
+				"name": "tokenName",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "string",
 						"name": "",
-						"type": "address"
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -631,10 +1341,23 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "totalSupplyAdjustmentTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "recipient",
+						"name": "to",
 						"type": "address"
 					},
 					{
@@ -651,19 +1374,6 @@
 						"type": "bool"
 					}
 				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "transferAndMint",
-				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -711,32 +1421,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "transferReceiver",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					}
-				],
-				"name": "unfreezeUser",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "uniswapPool",
 				"outputs": [
 					{
@@ -762,6 +1446,71 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "voteCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "voters",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "votersChangeTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "votingPaused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -775,6 +1524,25 @@
 						"internalType": "bool",
 						"name": "",
 						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "whitelistMembers",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -945,7 +1713,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CCK/CC2/b.sol": "CCKToken"
+			"contracts/CCK/CC2/Govemance3.sol": "CCKToken"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -1063,12 +1831,12 @@
 				"dweb:/ipfs/QmSQrckghEjs6HVsA5GVgpNpZWvTXMY5eQLF7cN6deFeEg"
 			]
 		},
-		"contracts/CCK/CC2/b.sol": {
-			"keccak256": "0x9c76a76929a0906977d59f82766722debf541c9ba54a1674458dadaffc73edb5",
+		"contracts/CCK/CC2/Govemance3.sol": {
+			"keccak256": "0x3bc6dfa5c871ffcb304d9d5d41d8352a8cf8de9836ebe14b6be4a2ef1556b9bf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://610c7d974421f396b33e69f2e6bcedccb8d2c46c0b11172c20ec350f24de3930",
-				"dweb:/ipfs/QmRJavxsNHM3UXPm8SNPNTEGUszi9r8XouQ4iaB4D7yeG4"
+				"bzz-raw://6c1940afae75047622c532e2b9190f1216958f7607397032635eb73dd1116cbe",
+				"dweb:/ipfs/QmeRYvuee4kcMg3AkVsmpghRDdWmfzCbLPDnQciBt4TsZJ"
 			]
 		},
 		"contracts/CCK/ERC3643.sol": {

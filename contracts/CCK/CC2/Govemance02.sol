@@ -587,6 +587,8 @@
             return 0;
         }
 
+
+        
         // 查看用户代币余额
         function balanceOfUser(address user) external view returns (uint256) {
             return balanceOf(user);
