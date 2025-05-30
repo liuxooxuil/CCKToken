@@ -310,7 +310,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CCK/CC2/boke.sol": "TokenHH"
+			"contracts/CCK/CC2/ces.sol": "TokenHH"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -364,12 +364,12 @@
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
 			]
 		},
-		"contracts/CCK/CC2/boke.sol": {
-			"keccak256": "0x1c88c3240fbfc986b86630d331daa52add2aa0e2b780b9968e0a2f4a8c65ef7d",
+		"contracts/CCK/CC2/ces.sol": {
+			"keccak256": "0x8a25bf29265d00a8542e8be1d7dffa204600160c746c94dcf7027131e7c2d7ff",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b1dd0325ee3335597391f793f11a183d5063def035df2543b493385f7d9f8801",
-				"dweb:/ipfs/QmfLv7YhSDdphfrJRnjSULc7jxS92LGFuDGZ6iCSrtffmy"
+				"bzz-raw://eb0066cc41647c7a59f0604ce9c62c8edd435e697ed78a7dd6b9de05e37251ca",
+				"dweb:/ipfs/QmRKdgdLdQkGkbzEPUTixCa2SWxVKvytJu1pnvYhrqFZXZ"
 			]
 		}
 	},

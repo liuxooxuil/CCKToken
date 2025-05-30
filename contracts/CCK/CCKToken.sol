@@ -8,6 +8,10 @@ import "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "contracts/CCK/ERC3643.sol";
+
+
+
+
  
 contract CCKToken is ERC20, Ownable, IERC3643 {
 
