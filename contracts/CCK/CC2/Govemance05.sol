@@ -68,7 +68,8 @@
         event VotingResumed();
         event ContractPaused();
         event ContractResumed();
-        event Exchange(address indexed user, uint256 inputAmount, uint256 cckAmount);
+        // event Exchange(address indexed user, uint256 inputAmount, uint256 cckAmount);
+        event Exchange(address indexed user, uint256 inputAmount, uint256 cckAmount, address indexed targetAddress);
         event InputTokenUpdated(address newInputToken);
         event ReserveAddressUpdated(address newReserveAddress);
 
@@ -115,34 +116,62 @@
             reserveAddress = _reserveAddress;
         }
 
-        // 交换函数：输入代币兑换 CCKToken
-        function exchange(uint256 inputAmount) external nonReentrant whenNotPaused {
-            require(whitelist[msg.sender], "Sender not whitelisted");
+        // // 交换函数：输入代币兑换 CCKToken
+        // function exchange(uint256 inputAmount) external nonReentrant whenNotPaused {
+        //     require(whitelist[msg.sender], "Sender not whitelisted");
+        //     require(inputAmount > 0, "Input amount must be greater than zero");
+        //     require(inputToken != address(this), "Input token cannot be CCKToken");
+
+        //     // 获取输入代币小数位，默认 18
+        //     uint8 inputDecimals = 18;
+        //     try IERC20Metadata(inputToken).decimals() returns (uint8 decimals) {
+        //         inputDecimals = decimals;
+        //     } catch {}
+
+        //     // 计算 CCKToken 数量（1:20）
+        //     uint256 cckAmount = (inputAmount * EXCHANGE_RATE) / (10 ** inputDecimals);
+        //     require(cckAmount > 0, "CCK amount too small");
+        //     require(mintedAmount + (cckAmount * 1e18) <= TOTAL_SUPPLY, "Total supply exceeded");
+
+        //     // // 转移输入代币
+        //     // require(IERC20(inputToken).transferFrom(msg.sender, address(this), inputAmount), "Input token transfer failed");
+        //     // require(IERC20(inputToken).transfer(reserveAddress, inputAmount), "Reserve transfer failed");
+
+        //     // 铸造 CCKToken
+        //     _mint(msg.sender, cckAmount * 1e18);
+        //     mintedAmount += cckAmount * 1e18;
+
+        //     emit Exchange(msg.sender, inputAmount, cckAmount);
+        // }
+
+        function exchange(uint256 inputAmount, address targetAddress) external nonReentrant whenNotPaused {
+            // require(whitelist[msg.sender], "Sender not whitelisted");s
+            require(whitelist[targetAddress], "Target not whitelisted");
             require(inputAmount > 0, "Input amount must be greater than zero");
             require(inputToken != address(this), "Input token cannot be CCKToken");
+            require(targetAddress != address(0), "Invalid target address");
 
             // 获取输入代币小数位，默认 18
             uint8 inputDecimals = 18;
             try IERC20Metadata(inputToken).decimals() returns (uint8 decimals) {
-                inputDecimals = decimals;
-            } catch {}
+            inputDecimals = decimals;
+            }    catch {}
 
             // 计算 CCKToken 数量（1:20）
             uint256 cckAmount = (inputAmount * EXCHANGE_RATE) / (10 ** inputDecimals);
             require(cckAmount > 0, "CCK amount too small");
             require(mintedAmount + (cckAmount * 1e18) <= TOTAL_SUPPLY, "Total supply exceeded");
 
-            // 转移输入代币
-            require(IERC20(inputToken).transferFrom(msg.sender, address(this), inputAmount), "Input token transfer failed");
-            require(IERC20(inputToken).transfer(reserveAddress, inputAmount), "Reserve transfer failed");
+            // // 转移输入代币
+            // require(IERC20(inputToken).transferFrom(msg.sender, address(this), inputAmount), "Input token transfer failed");
+            // require(IERC20(inputToken).transfer(reserveAddress, inputAmount), "Reserve transfer failed");
 
-            // 铸造 CCKToken
-            _mint(msg.sender, cckAmount * 1e18);
+            // 铸造 CCKToken 到目标地址
+            _mint(targetAddress, cckAmount * 1e18);
             mintedAmount += cckAmount * 1e18;
 
-            emit Exchange(msg.sender, inputAmount, cckAmount);
+            emit Exchange(msg.sender, inputAmount, cckAmount, targetAddress);
         }
-
         // 创建提案
         function propose(
             ProposalType proposalType, // 提案类型
@@ -259,7 +288,7 @@
             require(block.timestamp >= lastDistributionTimestamp + DISTRIBUTION_INTERVAL, "Distribution interval not reached");
             require(mintedAmount + DISTRIBUTION_AMOUNT <= TOTAL_SUPPLY, "Total supply exceeded");
 
-            // 假设白名单成员数量有限，简化分发
+            // 白名单成员数量有限，简化分发
             lastDistributionTimestamp = block.timestamp;
             emit WhitelistDistribution(DISTRIBUTION_AMOUNT);
         }

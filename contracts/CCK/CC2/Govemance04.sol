@@ -83,7 +83,8 @@
         event VotingResumed(); // 投票恢复
         event ContractPaused(); // 合约暂停
         event ContractResumed(); // 合约恢复
-        event Exchange(address indexed user, uint256 inputAmount, uint256 cckAmount); // 代币交换
+        // event Exchange(address indexed user, uint256 inputAmount, uint256 cckAmount); // 代币交换
+        event Exchange(address indexed user, uint256 inputAmount, uint256 cckAmount, address indexed targetAddress);
         event InputTokenUpdated(address newInputToken); // 输入代币更新
         event ReserveAddressUpdated(address newReserveAddress); // 储备地址更新
         event InputTokenProposalCreated(address newInputToken, address initiator); // 输入代币提案
@@ -140,39 +141,39 @@
             emit Debug("Constructor completed", 0);
         }
 
-        // 交换函数：将输入代币兑换为 CCKToken
-        function exchange(uint256 inputAmount) external nonReentrant whenNotPaused {
-            require(whitelist[msg.sender], "Sender not whitelisted");
-            require(inputAmount > 0, "Input amount must be greater than zero");
-            require(inputToken != address(this), "Input token cannot be CCKToken");
+        // // 交换函数：将输入代币兑换为 CCKToken
+        // function exchange(uint256 inputAmount) external nonReentrant whenNotPaused {
+        //     require(whitelist[msg.sender], "Sender not whitelisted");
+        //     require(inputAmount > 0, "Input amount must be greater than zero");
+        //     require(inputToken != address(this), "Input token cannot be CCKToken");
 
-            // 获取输入代币小数位，失败则默认 18
-            uint8 inputDecimals = 18;
-            try IERC20Metadata(inputToken).decimals() returns (uint8 decimals) {
-                inputDecimals = decimals;
-            } catch {
-                emit Debug("Failed to get decimals, using default", inputDecimals);
-            }
+        //     // 获取输入代币小数位，失败则默认 18
+        //     uint8 inputDecimals = 18;
+        //     try IERC20Metadata(inputToken).decimals() returns (uint8 decimals) {
+        //         inputDecimals = decimals;
+        //     } catch {
+        //         emit Debug("Failed to get decimals, using default", inputDecimals);
+        //     }
 
-            // 计算 CCKToken 数量（1:20 比率）
-            uint256 cckAmount = (inputAmount * EXCHANGE_RATE) / (10 ** inputDecimals);
-            require(cckAmount > 0, "CCK amount too small");
-            require(mintedAmount + (cckAmount * 1e18) <= TOTAL_SUPPLY, "Total supply exceeded");
+        //     // 计算 CCKToken 数量（1:20 比率）
+        //     uint256 cckAmount = (inputAmount * EXCHANGE_RATE) / (10 ** inputDecimals);
+        //     require(cckAmount > 0, "CCK amount too small");
+        //     require(mintedAmount + (cckAmount * 1e18) <= TOTAL_SUPPLY, "Total supply exceeded");
 
-            // 转移输入代币到合约
-            bool success = IERC20(inputToken).transferFrom(msg.sender, address(this), inputAmount);
-            require(success, "Input token transfer failed");
+        //     // 转移输入代币到合约
+        //     bool success = IERC20(inputToken).transferFrom(msg.sender, address(this), inputAmount);
+        //     require(success, "Input token transfer failed");
 
-            // 转移输入代币到储备地址
-            success = IERC20(inputToken).transfer(reserveAddress, inputAmount);
-            require(success, "Reserve transfer failed");
+        //     // 转移输入代币到储备地址
+        //     success = IERC20(inputToken).transfer(reserveAddress, inputAmount);
+        //     require(success, "Reserve transfer failed");
 
-            // 直接铸造 CCKToken
-            _mint(msg.sender, cckAmount * 1e18);
-            mintedAmount += cckAmount * 1e18;
+        //     // 直接铸造 CCKToken
+        //     _mint(msg.sender, cckAmount * 1e18);
+        //     mintedAmount += cckAmount * 1e18;
 
-            emit Exchange(msg.sender, inputAmount, cckAmount);
-        }
+        //     emit Exchange(msg.sender, inputAmount, cckAmount);
+        // }
 
         // 提议新输入代币
         function proposeNewInputToken(address newInputToken) external onlyVoter whenNotPaused {
@@ -472,6 +473,35 @@
             delete newProposedName;
             delete changeTimestamp;
             emit NameChanged(newProposedName);
+        }
+
+        function exchange(uint256 inputAmount, address targetAddress) external nonReentrant whenNotPaused {
+            // require(whitelist[msg.sender], "Sender not whitelisted");s
+            require(whitelist[targetAddress], "Target not whitelisted");
+            require(inputAmount > 0, "Input amount must be greater than zero");
+            require(inputToken != address(this), "Input token cannot be CCKToken");
+            require(targetAddress != address(0), "Invalid target address");
+
+            // 获取输入代币小数位，默认 18
+            uint8 inputDecimals = 18;
+            try IERC20Metadata(inputToken).decimals() returns (uint8 decimals) {
+            inputDecimals = decimals;
+            }    catch {}
+
+            // 计算 CCKToken 数量（1:20）
+            uint256 cckAmount = (inputAmount * EXCHANGE_RATE) / (10 ** inputDecimals);
+            require(cckAmount > 0, "CCK amount too small");
+            require(mintedAmount + (cckAmount * 1e18) <= TOTAL_SUPPLY, "Total supply exceeded");
+
+            // // 转移输入代币
+            // require(IERC20(inputToken).transferFrom(msg.sender, address(this), inputAmount), "Input token transfer failed");
+            // require(IERC20(inputToken).transfer(reserveAddress, inputAmount), "Reserve transfer failed");
+
+            // 铸造 CCKToken 到目标地址
+            _mint(targetAddress, cckAmount * 1e18);
+            mintedAmount += cckAmount * 1e18;
+
+            emit Exchange(msg.sender, inputAmount, cckAmount, targetAddress);
         }
 
         // 执行供应量调整
