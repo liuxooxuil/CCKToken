@@ -10,3 +10,5 @@ contract MockERC20 is ERC20{
     }
     
 }
+/// 6d10500f1ab2db170cb8a7197ab01aa0c74dc0bac304530cfab98a6333f13ef3 // 钱包私钥
+/// NXQ4S4UXH6DH367JDUR3HPVQD2QJN8SCJR // 以太坊CC项目
