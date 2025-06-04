@@ -23,7 +23,7 @@ contract TestUSDT is ERC20, Ownable {
         return super.balanceOf(account);
     }
 
-    // 提供分发功能（可选）
+    // 提供分发功能
     function distributeTokens(address[] memory recipients, uint256[] memory amounts) external onlyOwner {
         require(recipients.length == amounts.length, "Recipients and amounts length mismatch");
         

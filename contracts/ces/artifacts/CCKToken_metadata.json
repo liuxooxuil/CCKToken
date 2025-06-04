@@ -1531,11 +1531,11 @@
 			]
 		},
 		"contracts/ces/CCKToken.sol": {
-			"keccak256": "0x1e6678881fa32f4b02a57ecdec895d86cdf43407497667df4e8b55a8f3486162",
+			"keccak256": "0x55e9d5015d4d88176f3ef8a2023c873485a76215aa2dad4d3fe4cb887ed22815",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dc77863af26b5e09ca4f44625b34dd1cda19e26afe33edcaae155307188d7a0e",
-				"dweb:/ipfs/Qmf7jZcj6KeC6GNLjyadkS9angqVsM63MH1oo1PNc1eiVc"
+				"bzz-raw://ca659eed452b4b42a688812408ca0fc913cf85c72f36a9195999a88036c77dd2",
+				"dweb:/ipfs/QmepL9S2WQ4HSB2dUWrjui6yrRq7jzkeWycXSsjwA8cgM5"
 			]
 		}
 	},

@@ -261,7 +261,7 @@
             resetVotes();
             ProposalType cancelledType = proposal.proposalType;
             delete proposals[proposalId];
-            emit ProposalCancelled(proposalId, cancelledType);
+            emit ProposalCancelled(proposalId, cancelledType); // 响应
         }
 
         // 重置投票
