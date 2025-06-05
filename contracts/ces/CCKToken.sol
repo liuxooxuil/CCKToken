@@ -119,7 +119,7 @@
             require(inputAmount > 0, ""); // 输入数量需大于零
 
             uint256 cckAmount = inputAmount * EXCHANGE_RATE;
-            require(cckAmount > 0, "CC ");  // 数量过小
+            require(cckAmount > 0, "");  // 数量过小
             require(mintedAmount + (cckAmount) <= TOTAL_SUPPLY, ""); //超过总供应量
 
             _mint(targetAddress, cckAmount);
@@ -324,6 +324,7 @@
             require(amount == uint256(uint128(amount)), ""); // 数量必须为整数
             return super.transfer(to, amount);
         }
+
 
         // 从指定地址转账
         function transferFrom(address sender, address recipient, uint256 amount) public override whenNotPaused returns (bool) {
