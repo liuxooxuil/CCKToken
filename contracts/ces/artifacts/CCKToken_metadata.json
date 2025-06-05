@@ -161,6 +161,25 @@
 			},
 			{
 				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address[]",
+						"name": "recipients",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountPerAddress",
+						"type": "uint256"
+					}
+				],
+				"name": "AutoBatchMintToWhitelist",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
 				"inputs": [],
 				"name": "ContractPaused",
 				"type": "event"
@@ -219,6 +238,25 @@
 					}
 				],
 				"name": "FreezeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address[]",
+						"name": "recipients",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountPerAddress",
+						"type": "uint256"
+					}
+				],
+				"name": "ManualBatchMintToWhitelist",
 				"type": "event"
 			},
 			{
@@ -438,6 +476,32 @@
 			},
 			{
 				"inputs": [],
+				"name": "AUTO_BATCH_MINT_INTERVAL",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "BATCH_MINT_AMOUNT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "DISTRIBUTION_AMOUNT",
 				"outputs": [
 					{
@@ -572,6 +636,19 @@
 						"type": "bool"
 					}
 				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "whitelistAddresses",
+						"type": "address[]"
+					}
+				],
+				"name": "autoBatchMintToWhitelist",
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -757,6 +834,11 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -807,6 +889,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "lastAutoBatchMintTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "lastDistributionTimestamp",
 				"outputs": [
 					{
@@ -816,6 +911,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "whitelistAddresses",
+						"type": "address[]"
+					}
+				],
+				"name": "manualBatchMintToWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -1396,7 +1504,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/ces/CCKToken.sol": "CCKToken"
+			"contracts/ces/CCToken3.sol": "CCKToken"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -1530,12 +1638,12 @@
 				"dweb:/ipfs/QmPWt8jCPU7rafXDoL9biEvtMpm7cznbnNm6cttokSHeou"
 			]
 		},
-		"contracts/ces/CCKToken.sol": {
-			"keccak256": "0x30df4faa4e31cf62bfbc213e7d878993726bcc3bb4805506fd3f3c20b4a8d8bd",
+		"contracts/ces/CCToken3.sol": {
+			"keccak256": "0x544b8364fff0cf11e8ae00de9fe4264e4ff1bf93d43f16742469b5d60cf6713a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://79b16de07031f88abbdbcd68ab416bd063139eed5c232b535e73d122fd86ce2e",
-				"dweb:/ipfs/QmUmMY5BVy86xovjAAbb64fgnpNExBGNhViwWb6DyncTGA"
+				"bzz-raw://566a8f532739466aacb580d092881e98cf94ad03bb278bfeca5f5198fbb906c9",
+				"dweb:/ipfs/QmU4vmE2TF5qhm6Mz1SVKiXCAvCVfsJBhy8xfQ4y9q5hE5"
 			]
 		}
 	},
