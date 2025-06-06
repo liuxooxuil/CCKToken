@@ -1639,11 +1639,11 @@
 			]
 		},
 		"contracts/ces/CCToken3.sol": {
-			"keccak256": "0x544b8364fff0cf11e8ae00de9fe4264e4ff1bf93d43f16742469b5d60cf6713a",
+			"keccak256": "0xce4245a42570d20613bf48a9b593fe064a57a6a00ab388bcd26071cbbe5cbfe4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://566a8f532739466aacb580d092881e98cf94ad03bb278bfeca5f5198fbb906c9",
-				"dweb:/ipfs/QmU4vmE2TF5qhm6Mz1SVKiXCAvCVfsJBhy8xfQ4y9q5hE5"
+				"bzz-raw://9e937b702cfe443adc32276da4d91af98b2041062973f4c7854cbc78cc626352",
+				"dweb:/ipfs/Qmdd97zA5FDNm22tgRuNhoDnS21sHYBuGqYU2guABikVQK"
 			]
 		}
 	},

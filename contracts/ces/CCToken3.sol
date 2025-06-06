@@ -192,6 +192,7 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
             require(whitelist[target] && target != address(0), "Invalid recipients");
             require(value > 0 && mintedAmount + value <= TOTAL_SUPPLY, "Number of invalid mints");
         }
+        
 
         proposals[proposalCount] = Proposal({
             proposalType: proposalType,
@@ -205,7 +206,7 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
             newVoters: newVoters,
             active: true
         });
-
+        
         emit ProposalCreated(proposalCount, proposalType, msg.sender);
         proposalCount++;
     }
