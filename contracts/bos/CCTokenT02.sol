@@ -207,11 +207,6 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
 
         emit VoteCast(proposalId, msg.sender);
     }
-    ///WhitelistAdd, WhitelistRemove, Freeze, Unfreeze,
-    ///     uint256 public constant TOTAL_VOTES_REQUIRED = 5;
-    //uint256 public constant MIN_VOTES_FOR_USER_ACTIONS = 3;
-    //uint256 public constant MIN_VOTES_FOR_MINT = 2;
-    // Name, TotalSupply, Voters, WhitelistAdd, WhitelistRemove, Freeze, Unfreeze, Mint
 
     function _checkProposalVotes(Proposal storage proposal, uint256 proposalId) internal view returns (uint256) {
         require(proposal.active, "No active proposal");

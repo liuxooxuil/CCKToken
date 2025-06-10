@@ -1503,7 +1503,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/bos/CCTokenTO1.sol": "CCKToken"
+			"contracts/bos/CCTokenT02.sol": "CCKToken"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -1581,12 +1581,12 @@
 				"dweb:/ipfs/QmPWt8jCPU7rafXDoL9biEvtMpm7cznbnNm6cttokSHeou"
 			]
 		},
-		"contracts/bos/CCTokenTO1.sol": {
-			"keccak256": "0x5137b33374808263bb82d79e8448f3ea6fd57f8b00338f87fd4f9ab88ab25c00",
+		"contracts/bos/CCTokenT02.sol": {
+			"keccak256": "0x4237253932293e4970e9ebb5bdb71815678adc011603fb04ee099d1345407ce8",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://40cee871969369ee1ff5bfa1a912113c70e6d56667c0f08f6c068e33262744d3",
-				"dweb:/ipfs/QmVGRdv74SjqJBxE9BPApFnU1EHDCyPsuKbhvA4kTviRVb"
+				"bzz-raw://9ba8eaad49f0c5eea84893b91339dc406fd06f5c77deb66e1ea1268d350b6986",
+				"dweb:/ipfs/QmNULR44fsDHRu2vLFyBwDK3NHKXqyiLzhdX7reRKHND3X"
 			]
 		}
 	},
