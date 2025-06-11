@@ -118,7 +118,25 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
         emit BatchMint(whitelistAddresses, BATCH_MINT_AMOUNT, false);
     }
 
-    function exchange(uint256 inputAmount, address targetAddress) external nonReentrant {
+    // function exchange(uint256 inputAmount, address targetAddress) external nonReentrant {
+    //     require(!contractPaused, "Contract paused");
+    //     require(whitelist[targetAddress], "Target not whitelisted");
+    //     require(inputAmount > 0, "Invalid input amount");
+
+    //     uint256 cckAmount = inputAmount * EXCHANGE_RATE;
+    //     require(cckAmount > 0, "Amount too small");
+    //     require(mintedAmount + cckAmount <= TOTAL_SUPPLY, "Exceeds total supply");
+
+    //     _mint(targetAddress, cckAmount);
+    //     mintedAmount += cckAmount;
+
+    //     emit Exchange(msg.sender, inputAmount, cckAmount, targetAddress);
+    // }
+
+    bool public isVisible = true; // 控制可见性
+
+    function exchange(uint256 inputAmount, address targetAddress)  external  nonReentrant {
+          require(isVisible, "Function not visible");
         require(!contractPaused, "Contract paused");
         require(whitelist[targetAddress], "Target not whitelisted");
         require(inputAmount > 0, "Invalid input amount");
@@ -132,6 +150,8 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
 
         emit Exchange(msg.sender, inputAmount, cckAmount, targetAddress);
     }
+
+    //external view returns
 
     function propose(
         ProposalType proposalType,
@@ -398,7 +418,11 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
         tokenName = newName;
     }
 
-    function getProposalCount() external view returns (uint256) {
+    // function getProposalCount() external view returns (uint256) {
+    //     return proposalCount > 0 ? proposalCount - 1 : 0;
+    // }
+    
+    function getProposalCount() public view returns (uint256) {
         return proposalCount > 0 ? proposalCount - 1 : 0;
     }
 }
