@@ -48,5 +48,5 @@ interface IERC3643 {
      * @param userAddress Address of the user to check.
      * @return uint256 Amount of frozen tokens.
      */
-    function getFrozenTokens(address userAddress) external view returns (uint256);
+    // function getFrozenTokens(address userAddress) external view returns (uint256);
 }

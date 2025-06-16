@@ -706,7 +706,7 @@
 						"type": "address"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -806,25 +806,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "userAddress",
-						"type": "address"
-					}
-				],
-				"name": "getFrozenTokens",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "getProposalCount",
 				"outputs": [
@@ -871,7 +852,7 @@
 						"type": "address"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -1252,7 +1233,7 @@
 						"type": "string"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -1432,15 +1413,6 @@
 				"decimals()": {
 					"details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5.05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the default value returned by this function, unless it's overridden. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
 				},
-				"getFrozenTokens(address)": {
-					"details": "Returns the number of frozen tokens for a user.",
-					"params": {
-						"userAddress": "Address of the user to check."
-					},
-					"returns": {
-						"_0": "uint256 Amount of frozen tokens."
-					}
-				},
 				"identityRegistry()": {
 					"details": "Returns the identity registry address.",
 					"returns": {
@@ -1503,7 +1475,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/bos/CCTokenTO11.sol": "CCKToken"
+			"contracts/bos/CCToken02.sol": "CCKToken"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -1574,19 +1546,19 @@
 			]
 		},
 		"contracts/CCK/ERC3643.sol": {
-			"keccak256": "0xd208c81552c0162bc660d08f9a22876de20247e40b8a161e411e8f00df1dcd67",
+			"keccak256": "0x45d4233f68c48937bf5d1d9662195828f48c84987c67d1cd19abe11cfa36cea9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://14523991ce6c5d1fc9a789108e878f9d74823a36700c9be83f4bdc7d35e5ea84",
-				"dweb:/ipfs/QmPWt8jCPU7rafXDoL9biEvtMpm7cznbnNm6cttokSHeou"
+				"bzz-raw://f94a1cbad035adf09b043dcc9386de6bb39762dc52ea2296b06bede0d20b2900",
+				"dweb:/ipfs/QmXhUHCJiLEgEX1gmVvAcAkkcB6Lse6NtAZEDnDwXZxU5Y"
 			]
 		},
-		"contracts/bos/CCTokenTO11.sol": {
-			"keccak256": "0x411de2e1d763af714dee8325722d395b39929951ec559683e1ba9de2931fe93e",
+		"contracts/bos/CCToken02.sol": {
+			"keccak256": "0x14136f50dcb3cab6a232329b3924bc5fdd45f25ca53e363a8c718c16c4bfc7ec",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f073676862ca6a646639f3b7d1982887bb8353d3edd68b8de494f9fd2d447471",
-				"dweb:/ipfs/QmYaBkfHB5PeLLSJPhqYQjnJKwXzZmbNRshBmBEtSyY2vr"
+				"bzz-raw://3d36a28ba5e0d6d8abea3d129933855571295e7b64ef33271910ebb635568559",
+				"dweb:/ipfs/QmYtzA339vevhprdhsM9yqnFbV8gt7J15UwWiJ2NtXjKec"
 			]
 		}
 	},

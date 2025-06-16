@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract TestUSDT is ERC20, Ownable {
-    constructor(address[] memory recipients, uint256[] memory amounts) ERC20("Test USDT", "USDT")Ownable(msg.sender) {
+    constructor(address[] memory recipients, uint256[] memory amounts) ERC20("Test USDC", "USDC")Ownable(msg.sender) {
         require(recipients.length == amounts.length, "Recipients and amounts length mismatch");
         
         // 发行总量为 200,000

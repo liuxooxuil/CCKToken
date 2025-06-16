@@ -120,8 +120,8 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
     }
 
 
-
-    function exchange(uint256 inputAmount, address targetAddress)  external  nonReentrant {
+    /// 
+    function exchange(uint256 inputAmount, address targetAddress) external nonReentrant {
 
         require(!contractPaused, "");
         require(whitelist[targetAddress], "");
@@ -129,6 +129,7 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
 
         uint256 cckAmount = inputAmount * EXCHANGE_RATE;
         require(cckAmount > 0, "");
+        
         require(mintedAmount + cckAmount <= TOTAL_SUPPLY, "");
 
         _mint(targetAddress, cckAmount);
@@ -276,7 +277,7 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
         require(proposal.active, "");
         require(msg.sender == proposal.initiator, "");
         require(proposal.proposalType <= ProposalType.Voters, "");
-        // require(proposal.voteCount >= TOTAL_VOTES_REQUIRED, "Proposal already approved");  // 开放取消投票
+        // require(proposal.voteCount >= TOTAL_VOTES_REQUIRED, "Proposal already approved");  
         require(block.timestamp < proposal.timestamp, "");
 
         resetVotes(proposalId);
@@ -354,6 +355,7 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
         require(amount == uint256(uint128(amount)), "");
         return super.transfer(to, amount);
     }
+
 
     function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
         require(!contractPaused, "");
