@@ -28,41 +28,17 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "recipient",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "transfer",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "sender",
+						"name": "from",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "recipient",
+						"name": "to",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "value",
 						"type": "uint256"
 					}
 				],
@@ -93,7 +69,7 @@
 		"compilationTarget": {
 			"contracts/bbk/USDTTO.sol": "IERC20"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -106,11 +82,10 @@
 	},
 	"sources": {
 		"contracts/bbk/USDTTO.sol": {
-			"keccak256": "0x1dade9e6c8402ce3a3ec628e6b00119321ba88438b62ad3d73d52ed8412ec0c8",
-			"license": "MIT",
+			"keccak256": "0x3c8cdeee746b4d2f2b46827ebe9b60d8da874a12aabe418b56fc4d2d460f52fa",
 			"urls": [
-				"bzz-raw://52c48640a4582b1fb1e6c6fea44cb2fd964a0ed73e9b464d11b332f9fd15f7cc",
-				"dweb:/ipfs/QmevyHtrUMhNoRdBVatUDYbGs55poN24ZU7Jc58rPsypgQ"
+				"bzz-raw://dbb6684bfa6fc522787d0c4347eb7a1a0520ae1f51a19533407743decd238837",
+				"dweb:/ipfs/QmaCtgHiZTofy4mpMX9J5kvqeHRWJqaxXbo8ZrbZbtCt3U"
 			]
 		}
 	},

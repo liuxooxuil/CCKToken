@@ -50,7 +50,6 @@
 		"gasEstimates": null,
 		"methodIdentifiers": {
 			"balanceOf(address)": "70a08231",
-			"transfer(address,uint256)": "a9059cbb",
 			"transferFrom(address,address,uint256)": "23b872dd"
 		}
 	},
@@ -78,41 +77,17 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "recipient",
-					"type": "address"
-				},
-				{
-					"internalType": "uint256",
-					"name": "amount",
-					"type": "uint256"
-				}
-			],
-			"name": "transfer",
-			"outputs": [
-				{
-					"internalType": "bool",
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "sender",
+					"name": "from",
 					"type": "address"
 				},
 				{
 					"internalType": "address",
-					"name": "recipient",
+					"name": "to",
 					"type": "address"
 				},
 				{
 					"internalType": "uint256",
-					"name": "amount",
+					"name": "value",
 					"type": "uint256"
 				}
 			],

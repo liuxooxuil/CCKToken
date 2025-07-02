@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "contracts/CCK/ERC3643.sol";
 
 contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
-    uint256 public TOTAL_SUPPLY = 500_000 * 10**18; 
+    uint256 public TOTAL_SUPPLY = 300_000_000 * 10**18;
     mapping(address => bool) public whitelist;
     mapping(address => bool) public frozen;
     uint256 public mintedAmount;
@@ -65,6 +65,7 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
     event BatchMint(address[] indexed recipients, uint256 amountPerAddress, bool isAuto);
     event VoteCast(uint256 indexed proposalId, address indexed voter);
     event WhitelistCheckToggled(bool enabled);
+
 
     constructor(
         string memory initialName,
@@ -411,4 +412,5 @@ contract CCKToken is ERC20, Ownable, IERC3643, ReentrancyGuard {
     function getWhitelistCheckEnabled() public view returns (bool) {
         return whitelistCheckEnabled;
     }
+      
 }

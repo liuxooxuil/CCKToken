@@ -202,6 +202,37 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "user",
 						"type": "address"
 					},
@@ -746,6 +777,45 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "target",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "tokenDecimals",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "exchangeRate",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -1514,9 +1584,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/bbk/CCToken02.sol": "CCKToken"
+			"contracts/CC/CCToken2.sol": "CCKToken"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -1584,20 +1654,20 @@
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
 			]
 		},
+		"contracts/CC/CCToken2.sol": {
+			"keccak256": "0x0ff10e1fefc5deefe678746fb23f3f1aa529a22356b85ee16a9c2a8691032c06",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eb6e7779628b7b062c963070caed7d64c63f0d9cfff9fe39d52d6e088b32e9f3",
+				"dweb:/ipfs/QmUfn88BjzKqhNR2PZLs5w8SNpcacRE2zrF3pFgLnDQVCo"
+			]
+		},
 		"contracts/CCK/ERC3643.sol": {
 			"keccak256": "0x45d4233f68c48937bf5d1d9662195828f48c84987c67d1cd19abe11cfa36cea9",
 			"license": "MIT",
 			"urls": [
 				"bzz-raw://f94a1cbad035adf09b043dcc9386de6bb39762dc52ea2296b06bede0d20b2900",
 				"dweb:/ipfs/QmXhUHCJiLEgEX1gmVvAcAkkcB6Lse6NtAZEDnDwXZxU5Y"
-			]
-		},
-		"contracts/bbk/CCToken02.sol": {
-			"keccak256": "0xbe0d7dbaddb37c3542bbe488f997762a2fc071449012a206c5d81c9ce8474b02",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://deee1aec270f3eadee3b77b8ccce8abf2ada9ee1e2b00bd6b8ff0af5ef612fcf",
-				"dweb:/ipfs/QmR6wyGQEg6vtceFGpsh3DoGuEnLTqdzxViHwJcbznn7k2"
 			]
 		}
 	},
