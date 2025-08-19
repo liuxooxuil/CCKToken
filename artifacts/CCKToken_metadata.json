@@ -1663,11 +1663,11 @@
 			]
 		},
 		"contracts/CCToken.sol": {
-			"keccak256": "0x0ff10e1fefc5deefe678746fb23f3f1aa529a22356b85ee16a9c2a8691032c06",
+			"keccak256": "0x6209c2bac707c14047b5ea73c36da13f93b01659d89201ecf8a6182be0986917",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://eb6e7779628b7b062c963070caed7d64c63f0d9cfff9fe39d52d6e088b32e9f3",
-				"dweb:/ipfs/QmUfn88BjzKqhNR2PZLs5w8SNpcacRE2zrF3pFgLnDQVCo"
+				"bzz-raw://4aa62254ad33ea48e5aa6aaa8853e8bbde7043446f12a4ea9d9ca2ceedb0f761",
+				"dweb:/ipfs/QmWRBfPd8Z7CQjUtN2VaMcdvmu7gLe3o2LkjAY6cUjHQgQ"
 			]
 		}
 	},
