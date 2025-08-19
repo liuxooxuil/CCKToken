@@ -1584,7 +1584,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CC/CCToken2.sol": "CCKToken"
+			"contracts/CCToken.sol": "CCKToken"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -1654,20 +1654,20 @@
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
 			]
 		},
-		"contracts/CC/CCToken2.sol": {
-			"keccak256": "0x0ff10e1fefc5deefe678746fb23f3f1aa529a22356b85ee16a9c2a8691032c06",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://eb6e7779628b7b062c963070caed7d64c63f0d9cfff9fe39d52d6e088b32e9f3",
-				"dweb:/ipfs/QmUfn88BjzKqhNR2PZLs5w8SNpcacRE2zrF3pFgLnDQVCo"
-			]
-		},
 		"contracts/CCK/ERC3643.sol": {
 			"keccak256": "0x45d4233f68c48937bf5d1d9662195828f48c84987c67d1cd19abe11cfa36cea9",
 			"license": "MIT",
 			"urls": [
 				"bzz-raw://f94a1cbad035adf09b043dcc9386de6bb39762dc52ea2296b06bede0d20b2900",
 				"dweb:/ipfs/QmXhUHCJiLEgEX1gmVvAcAkkcB6Lse6NtAZEDnDwXZxU5Y"
+			]
+		},
+		"contracts/CCToken.sol": {
+			"keccak256": "0x0ff10e1fefc5deefe678746fb23f3f1aa529a22356b85ee16a9c2a8691032c06",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eb6e7779628b7b062c963070caed7d64c63f0d9cfff9fe39d52d6e088b32e9f3",
+				"dweb:/ipfs/QmUfn88BjzKqhNR2PZLs5w8SNpcacRE2zrF3pFgLnDQVCo"
 			]
 		}
 	},
