@@ -207,10 +207,10 @@
 	},
 	"sources": {
 		"contracts/CCToken_flattened.sol": {
-			"keccak256": "0xf301c88c2354831da87fd1ac79e0d741bcb439ca479bba5bd226afc49e3fb490",
+			"keccak256": "0x40c8f23b200f4a834625aa38dca2c906ab0f7e25180baa0c878ee542d5e633ee",
 			"urls": [
-				"bzz-raw://7e4e4029c1907e29510e8b2e40f406d86f91b7df4bbfca688a129b69fcf22d5e",
-				"dweb:/ipfs/QmVWaEFraMUiyMxYd5UWHFatz8vhA74XroNV98MqHBAsR9"
+				"bzz-raw://61d2c783621b8886bfb45b01a7df2aa6ae455cb4a6234ad473bcebbc8eaa9f22",
+				"dweb:/ipfs/QmY74JBhcGCbXSe92U3GoRSJJG3w6wqwLCFgXNjCufAfM1"
 			]
 		}
 	},
