@@ -145,7 +145,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/CCK/ERC3643.sol": "IERC3643"
+			"contracts/CCToken_flattened.sol": "IERC3643"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -159,12 +159,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/CCK/ERC3643.sol": {
-			"keccak256": "0x45d4233f68c48937bf5d1d9662195828f48c84987c67d1cd19abe11cfa36cea9",
-			"license": "MIT",
+		"contracts/CCToken_flattened.sol": {
+			"keccak256": "0xf301c88c2354831da87fd1ac79e0d741bcb439ca479bba5bd226afc49e3fb490",
 			"urls": [
-				"bzz-raw://f94a1cbad035adf09b043dcc9386de6bb39762dc52ea2296b06bede0d20b2900",
-				"dweb:/ipfs/QmXhUHCJiLEgEX1gmVvAcAkkcB6Lse6NtAZEDnDwXZxU5Y"
+				"bzz-raw://7e4e4029c1907e29510e8b2e40f406d86f91b7df4bbfca688a129b69fcf22d5e",
+				"dweb:/ipfs/QmVWaEFraMUiyMxYd5UWHFatz8vhA74XroNV98MqHBAsR9"
 			]
 		}
 	},

@@ -421,7 +421,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/ces/CCKToken_flattened.sol": "ERC20"
+			"contracts/CCToken_flattened.sol": "ERC20"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -435,11 +435,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/ces/CCKToken_flattened.sol": {
-			"keccak256": "0xc18907de7a76439f7d18166552720e65b670a140866b827df60f23d4e77a54b6",
+		"contracts/CCToken_flattened.sol": {
+			"keccak256": "0xf301c88c2354831da87fd1ac79e0d741bcb439ca479bba5bd226afc49e3fb490",
 			"urls": [
-				"bzz-raw://b04f0fe7171cfdf88f644cea2950b911edd6f81f8c122281cd7d2604d7306077",
-				"dweb:/ipfs/QmXYbjHL3TRHsX1Eo22BQN4VzA7MiCihBzMmE4hbe7dpqn"
+				"bzz-raw://7e4e4029c1907e29510e8b2e40f406d86f91b7df4bbfca688a129b69fcf22d5e",
+				"dweb:/ipfs/QmVWaEFraMUiyMxYd5UWHFatz8vhA74XroNV98MqHBAsR9"
 			]
 		}
 	},
